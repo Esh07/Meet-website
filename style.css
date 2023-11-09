@@ -1,19 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-    font-family: Bahnschrift;
     box-sizing: border-box;
+}
+
+:root{
+    --primary-color: #dfcefd;
+    --secondary-color: #150c1d;
+    --third-color: #301e43;
+    --fourth-color: #1f1729;
+    --fifth-color: #e6e228;
+    --sixth-color: #61b752;
+    --seventh-color: #424141;
+    --eighth-color: #fdfdfd;
+    --ninth-color: #000000;
+
+    --white-color: #ffffff;
+    --black-color: #000000;
+
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+
+    --font-weight-100: 100;
+    --font-weight-200: 200;
+    --font-weight-300: 300;
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-600: 600;
+    --font-weight-700: 700;
+    --font-weight-800: 800;
+    --font-weight-900: 900;
+
+    --font-size-10: 10px;
+    --font-size-12: 12px;
+    --font-size-14: 14px;
+    --font-size-16: 16px;
+    --font-size-18: 18px;
+    --font-size-20: 20px;
+    --font-size-22: 22px;
+    --font-size-24: 24px;
+    --font-size-26: 26px;
+    --font-size-28: 28px;
+    --font-size-30: 30px;
+    --font-size-32: 32px;
+    --font-size-34: 34px;
+    --font-size-36: 36px;
+    --font-size-38: 38px;
+    --font-size-40: 40px;
+    --font-size-42: 42px;
+    --font-size-44: 44px;
+
 }
 html {
     scroll-behavior: smooth;
 }
 body {
-    background: #000000;
-    color: #ffffff;
+    background: var(--black-color);
+    color: var(--white-color);
 }
 
 .container {
     padding: 10px 10%;
+}
+
+p, span{
+    font-family: var(--font-secondary) !important;
+    letter-spacing: 1px;
+    font-size: 1.25rem !important;
+    font-weight: var(--font-weight-300);
+    line-height: 1.5;
 }
 
 nav {
@@ -29,7 +87,7 @@ nav {
     left: 0;
     right: 0;
     z-index: 9999;
-    background-color: #ffffffd5;
+    background-color: var(--white-color);
     padding: 10px 20px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -49,7 +107,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #000000;
+    color: var(--black-color);
     text-decoration: none;
     font-size: 18px;
     position: relative;
@@ -63,7 +121,13 @@ nav ul li a::after {
     left: 0;
     bottom: -6px;
     transition: 0.5s;
+    transition: width 0.5s ease-in-out;
 }
+nav ul li a.active::after {
+    width: var(--after-width);   
+
+}
+
 nav ul li a:hover::after {
     width: 100%;
 }
@@ -88,19 +152,92 @@ nav ul li a:hover::after {
     font-size: 60px;
     margin-top: 20px;
 }
-.home-text h1 span {
-    color: #e9c422;
+.hero-text-container {
+    width: fit-content;
+    position: relative;
+    padding: 0 1em;
+
+}
+.hero-text-container:before{
+    /* # get quotes symbol */
+    content: '\201C';
+    left: -10px;
+}
+
+.hero-text-container:after{
+    /* # get quotes symbol */
+    content: '\201D';
+    right: -10px;
+}
+
+.hero-text-container:before, .hero-text-container:after {
+    font-size: .8em;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    line-height: 1;
+    font-size: 2em;
+    font-weight: bold;
+    /* font-family: Georgia, serif; */
+    /* font-style: italic; */
+    opacity: .5;
+
+}
+.hero-typing {
+    background-color: var(--primary-color); /* Light purple background */
+    color: #333; /* Dark gray text */
+    padding: 5px;
+    line-height: 1;
+    position: relative; /* Add position: relative */
+  }
+
+
+.typing-cursor {
+  vertical-align: middle;
+  position: absolute; /* Add position: absolute */
+  top: 0; /* Position the cursor vertically */
+  right: 0; /* Position the cursor horizontally */
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  color: white; /* Text color */
+  background-color: #333; /* Background color */
+}
+
+.hero-typing:after {
+    content: ' ';
+    margin: 0;
+    position: absolute; /* Add position: absolute */
+    top: 0; /* Position the cursor vertically */
+    right: 0; /* Position the cursor horizontally */
+    animation: blink 1s infinite;
+    display: block;
+    color: #fff; /* White text color */
+    background-color: #424141; /* Dark gray background color */
+    line-height: 1;
+    height: 100%;
+    width: .25rem;
+  }
+
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.hero-text {
+    text-transform: capitalize;
 }
 .btn {
     margin-top: 50px;
     display: inline-block;
-    background: #dfcefd;
+    background: var(--primary-color);
     text-decoration: none;
     border: none;
     padding: 12px 24px;
     font-size: 18px;
     font-weight: bold;
-    color: #000000;
+    color: var(--black-color);
     cursor: pointer;
     border-radius: 10px;
     box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.1);
@@ -125,7 +262,7 @@ nav ul li a:hover::after {
     margin-top: 70px;
     font-size: 60px;
     font-weight: 600;
-    color: #dfcefd;
+    color: var(--primary-color);
     font-family: Bahnschrift;
     transition: transform 0.3s ease-in-out;
 }
@@ -175,7 +312,7 @@ nav ul li a:hover::after {
 
 .tab-titles p {
     font-family: Bahnschrift;
-    color: #dfcefd;
+    color: var(--primary-color);
 }
 .tab-links {
     margin-right: 60px;
@@ -209,7 +346,7 @@ nav ul li a:hover::after {
     margin: 10px 0;
 }
 .tab-contents ul li span {
-    color: #dfcefd;
+    color: var(--primary-color);
     font-size: 20px;
 }
 .tab-contents {
@@ -231,7 +368,7 @@ nav ul li a:hover::after {
     font-size: 60px;
     text-align: center;
     font-weight: 600;
-    color: #dfcefd;
+    color: var(--primary-color);
     font-family: Bahnschrift;
     transition: transform 0.3s ease-in-out;
 }
@@ -296,7 +433,7 @@ nav ul li a:hover::after {
     font-size: 60px;
     font-weight: 600;
     text-align: center;
-    color: #dfcefd;
+    color: var(--primary-color);
     font-family: Bahnschrift;
     text-underline-offset: 8px;
     transition: transform 0.3s ease-in-out;
@@ -373,7 +510,7 @@ nav ul li a:hover::after {
     text-align: center;
     margin-bottom: 70px;
     font-weight: 600;
-    color: #dfcefd;
+    color: var(--primary-color);
     transition: font-size 0.3s ease-in-out;
 }
 
@@ -415,12 +552,12 @@ nav ul li a:hover::after {
 
 .btn.btn2 {
     display: inline-block;
-    background: #dfcefd;
+    background: var(--primary-color);
     border: none;
     padding: 12px 24px;
     font-size: 18px;
     font-weight: bold;
-    color: #000000;
+    color: var(--black-color);
     box-shadow: 0 0 40px 0 rgba(255, 255, 255, 0.1);
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -440,7 +577,7 @@ form textarea {
     width: 100%;
     border: 0;
     outline: none;
-    background: #ffffff;
+    background: var(--white-color);
     padding: 15px;
     margin: 15px 0;
     color: #020202;
@@ -463,7 +600,7 @@ form .btn2 {
 footer {
     width: 100%;
     background: #150c1d;
-    color: #dfcefd;
+    color: var(--primary-color);
     font-weight: 300;
     padding: 25px 0;
 }
@@ -519,9 +656,11 @@ nav .icon {
 @media only screen and (max-width: 885px) {
     #home {
         background-image: url(items/images/phone.png);
+        background-position: 50% 15%;
+        background-size: cover;
     }
     .home-text {
-        margin-top: 80%;
+        margin-top: 40%;
         font-size: 16px;
     }
     .home-text h1 {
